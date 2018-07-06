@@ -1,0 +1,29 @@
+name: sample
+
+redis:
+  sentinels:
+    - "localhost:26379"
+  partitions:
+    EVEN:
+       masterName: "EVEN"
+       timeout: 10
+       database: 0
+       masterMaxThreads: 16
+       slaveMaxThreads: 256
+
+    ODD:
+       masterName: "ODD"
+       timeout: 10
+       database: 0
+       masterMaxThreads: 16
+       slaveMaxThreads: 256
+
+server:
+  type: default
+
+  applicationConnectors:
+    - type: http
+      port: 30303
+  adminConnectors:
+    - type: http
+      port: 30304
